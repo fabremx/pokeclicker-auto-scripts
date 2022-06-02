@@ -1,3 +1,14 @@
+// ==UserScript==
+// @name         Pokeclicker Auto Safari
+// @namespace    http://tampermonkey.net/
+// @version      0.1
+// @description  Auto safari script
+// @author       fabremx
+// @match        https://www.pokeclicker.com/
+// @icon         https://www.google.com/s2/favicons?sz=64&domain=pokeclicker.com
+// @grant        none
+// ==/UserScript==
+
 const UP = 'ArrowUp';
 const DOWN = 'ArrowDown';
 const LEFT = 'ArrowLeft';
@@ -68,18 +79,18 @@ function changeButtonColor(isActivated) {
 
 function createToggle() {
     const toggleDiv = document.createElement('div')
-    toggleDiv.style.width = "100px";
+    toggleDiv.style.width = "150px";
     toggleDiv.style.height = "100px";
     toggleDiv.style.margin = "auto";
-    toggleDiv.innerHTML = `<button id="autoSafari">${autoSafariActivated ? 'Disable' : 'Enable'} Auto Safari</button>`;
+    toggleDiv.innerHTML = `<button id="autoSafari">Auto Safari ${autoSafariActivated ? 'Enabled' : 'Disabled'}</button>`;
 
     const button = toggleDiv.querySelector('button');
     button.addEventListener('click', toggleButton, false);
 
-    button.style.backgroundColor = RED_COLOR;
+    button.style.backgroundColor = autoSafariActivated ? GREEN_COLOR : RED_COLOR;
     button.style.color = "white";
     button.style.border = "none";
-    button.style.padding = "4px 10px";
+    button.style.padding = "10px";
     button.style.borderRadius = "5px";
 
     document.getElementById('safariModal').appendChild(toggleDiv)
